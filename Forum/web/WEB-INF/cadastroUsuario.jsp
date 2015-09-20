@@ -15,16 +15,13 @@
         <h1>Cadastro de Usuario para utilização do Fórum!</h1>
         <form action="cadastro" method="POST">
             <label for="nomeUser">Nome de Usuario:</label><input type="text" name="name" id="nomeUser"></br>
-            <laber for="senhaUser">Senha:</laber><input type="text" name="senha" id="senhaUser"></br>
-            <select name="sex">
-                <option>
-                    Feminino
-                </option>
-                <option>
-                    Masculino
-                </option>
-            </select></br>
+            <label for="senhaUser">Senha:</laber><input type="text" name="senha" id="senhaUser"></br>
             <input type="submit" name="Cadastrar"></input>
+            
+            <h1>Se já é usuario, favor fazer login abaixo</h1>
+            <label for="usuario">Nome de Usuario:</label><input type="text" name="name" id="usuario"></br>
+            <label for="senha">Senha:</laber><input type="text" name="senhaUsuario" id="senha"></br
+            <input type="submit" name="Entrar"></input>
         </form>
     </body>
 </html>
