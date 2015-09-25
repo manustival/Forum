@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progIV.forum.models.dao;
 
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import prog4.forum.models.Usuario;
 
 /**
@@ -13,9 +11,34 @@ import prog4.forum.models.Usuario;
  */
 public class JdbcUsuarioDAO implements UsuarioDAO{
 
+    private Connection conexão;
+    
+    public void setConexão(Connection conexão)
+    {
+        this.conexão = conexão;
+    }
+    
     @Override
     public Usuario inserir(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql;
+        sql= "INSERT INTO usuario ("
+                + "nome,"
+                + "senha)"
+                + "VALUES (?,?)";
+        
+        PreparedStatement ps;
+        try{
+            ps = (PreparedStatement) conexão.prepareStatement(sql); //ver esta linha
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getSenha());
+            ps.executeUpdate();
+            
+            return usuario; 
+        }catch (SQLException ex)
+        {
+            throw new DaoException("Ocorreu um erro ao inserir uma Usuario" + ex.getMessage());
+        }
+        
     }
     
 }

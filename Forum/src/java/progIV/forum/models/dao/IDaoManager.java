@@ -9,5 +9,7 @@ public interface IDaoManager {
     
     
     UsuarioDAO getUsuarioDAO();
+    TopicoDAO getTopicoDAO();
+    AssuntoDAO getAssuntoDAO();
 
 }

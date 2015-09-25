@@ -9,10 +9,14 @@ import java.sql.SQLException;
 public class JdbcDaoManager implements IDaoManager{
     private Connection conexao;
     private JdbcUsuarioDAO usuarioDAO;
+    private JdbcTopicoDAO topicoDAO;
+    private JdbcAssuntoDAO assuntoDAO;
     
-    public JdbcDaoManager()
+    public JdbcDaoManager()//ver se precisa instanciar aqui mesmo
     {
         usuarioDAO = new JdbcUsuarioDAO();
+        topicoDAO = new JdbcTopicoDAO();
+        assuntoDAO = new JdbcAssuntoDAO();
     }
     
     @Override
@@ -22,7 +26,7 @@ public class JdbcDaoManager implements IDaoManager{
             Class.forName("com.mysql.jdbc.Driver");
             String url;
             url = "jdbc:mysql://localhost:3306/";
-            //conexao = DriverManager.getConnection(url, "root", "root");
+            //conexao = DriverManager.getConnection(url, "root", ""); //ver o erro da linha
             conexao.setAutoCommit(false);
             
             
@@ -67,5 +71,14 @@ public class JdbcDaoManager implements IDaoManager{
     public UsuarioDAO getUsuarioDAO() {
         return usuarioDAO;
     }
+    
+    public TopicoDAO getTopicoDAO(){
+        return topicoDAO;
+    }
+    
+    public AssuntoDAO getAssuntoDAO(){
+        return assuntoDAO;
+    }
+    
     
 }

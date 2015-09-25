@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import prog4.forum.models.Usuario;
+import prog4.forum.models.UsuarioManager;
+import prog4.forum.models.UsuarioManagerImpl;
 
 /**
  *
@@ -34,6 +36,10 @@ public class ValidacaoUsuario extends HttpServlet {
         Usuario usuario = new Usuario();
         usuario.setNome(request.getParameter("nome"));
         usuario.setSenha(request.getParameter("senha"));
+        
+        UsuarioManager manager;
+        manager = new UsuarioManagerImpl();
+        manager.cadastrar(usuario);
     }
 
     
